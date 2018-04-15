@@ -17,19 +17,19 @@ docker run --name=Django -td django-to_do_app
 
 1. A task will have a `title` and `due-date`.
 
-![main_app](images/main_app.png)
+![main_app](images/main_app2.png)
 
 2. There are only 2 state applicable for task. Pending or Completed 
 Restricting the user from the UI 
-![task_status](images/main_app2.png)
+![task_status](images/main_app3.png)
 
 3. Ascending by due date
 `http://localhost:8000/api/v1/task/`
-![due_date_orderby](images/postman.png)
+![due_date_orderby](images/postman)
 
 4.Search (on `title`) should be available
 `http://localhost:8000/api/v1/task/?title__contains=past`
-![due_date_orderby](images/title.png)
+![due_date_orderby](images/title)
 
 5.Filtering on `due-date` should be possible using the following — Today, This
 week, Next week, Overdue
