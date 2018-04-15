@@ -33,13 +33,13 @@ Restricting the user from the UI
 
 5. Filtering on `due-date` should be possible using the following — Today, This
 week, Next week, Overdue <br/><br/>
-** Following are the Search criteria : **
+**Following are the Search criteria : **
 * dateRange=today  `http://localhost:8000/api/v1/task/?dateRange=today`
 * dateRange=overdue  `http://localhost:8000/api/v1/task/?dateRange=overdue`
 * dateRange=last_week  `http://localhost:8000/api/v1/task/?dateRange=last_week`
 * dateRange=next_week  `http://localhost:8000/api/v1/task/?dateRange=next_week`
 
-Added custom build_filters for filtering the result 
+<br/>Added custom build_filters for filtering the result 
 
 Sample app :
 ![app](images/main_app5.png)
