@@ -41,7 +41,7 @@ week, Next week, Overdue <br/><br/>
 
 <br/>Added custom build_filters for filtering the result 
 
-Sample app :
+### Sample app :
 ![app](images/main_app5.png)
 
 
