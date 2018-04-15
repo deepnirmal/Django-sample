@@ -32,7 +32,7 @@ Restricting the user from the UI
 ![due_date_orderby](images/title.png)
 
 5. Filtering on `due-date` should be possible using the following — Today, This
-week, Next week, Overdue
+week, Next week, Overdue <br/>
 *Search criteria*
 * dateRange=today  `http://localhost:8000/api/v1/task/?dateRange=today`
 * dateRange=overdue  `http://localhost:8000/api/v1/task/?dateRange=overdue`
