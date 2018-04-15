@@ -25,13 +25,13 @@ Restricting the user from the UI
 
 3. Ascending by due date
 `http://localhost:8000/api/v1/task/`
-![due_date_orderby](images/postman)
+![due_date_orderby](images/postman.png)
 
-4.Search (on `title`) should be available
+4. Search (on `title`) should be available
 `http://localhost:8000/api/v1/task/?title__contains=past`
-![due_date_orderby](images/title)
+![due_date_orderby](images/title.png)
 
-5.Filtering on `due-date` should be possible using the following — Today, This
+5. Filtering on `due-date` should be possible using the following — Today, This
 week, Next week, Overdue
 *Search criteria*
 * dateRange=today  `http://localhost:8000/api/v1/task/?dateRange=today`
@@ -39,4 +39,9 @@ week, Next week, Overdue
 * dateRange=last_week  `http://localhost:8000/api/v1/task/?dateRange=last_week`
 * dateRange=next_week  `http://localhost:8000/api/v1/task/?dateRange=next_week`
 
-Examples for all :
+Added custom build_filters for filtering the result 
+
+Sample app :
+![app](images/main_app5.png)
+
+
