@@ -3,8 +3,8 @@
 
 ### Run the project 
 ```
-python3 manage.py migrate`
-python3 manage.py testserver`
+python3 manage.py migrate
+python3 manage.py testserver
 ```
 ### OR Buid using Docker image
 Using Docker file
