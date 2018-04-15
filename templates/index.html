@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ToDo App</title>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/css/bootstrap-select.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'bs/css/flatly.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+</head>
+<body>
+
+<div class="container-fluid" id="wrapper">
+
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-4" id="content">
+            <h2>WHAT DO YOU WANT TO DO TODAY?</h2>
+
+            <form action="add" method="POST" role="form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label class="control-label" for="date">Title</label>
+                    <input type="text" id="title" name="title" class="form-control" placeholder="Enter a title" aria-label="Todo">
+
+                    <label class="control-label" for="date">Due Date</label>
+                    <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
+
+
+                    <label class="control-label" for="date">Status</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" id="status" name="status" value="Pending" checked>
+                        <label class="form-check-label" for="status">
+                            Pending
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" id="status" name="status" value="Completed" checked>
+                        <label class="form-check-label" for="status">
+                            Completed
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-default" id="add-btn">ADD</button>
+
+                </div>
+            </form>
+
+            <label class="control-label" for="date">Search tasks : </label>
+            <select class="selectpicker">
+                <option>Today</option>
+                <option>This week</option>
+                <option>Next week</option>
+                <option>Overdue</option>
+            </select>
+
+            <ul class="list-group t20">
+                {% for task in task_list %}
+                    {% if task.status == 'Pending' %}
+                        <li class="list-group-item">{{ task.title }}  {{ task.status }}  {{ task.due_date }}</li>
+                    {% endif %}
+                    {% if task.status == 'Completed' %}
+                        <li class="list-group-item todo-completed">{{ task.title }}  {{ task.status }}  {{ task.due_date }}</li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            {#                    <li class="list-group-item todo-completed">Attend weekly coding session.</li>#}
+
+        </div>
+    </div>
+
+    <footer>
+        <div class="row pad">
+            <div class="col-lg-12 text-center">
+                Copyright &copy; 2017 <strong>ToDo App</strong>
+            </div>
+        </div>
+    </footer>
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/js/bootstrap-select.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.selectpicker').selectpicker();
+    });
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<!-- Bootstrap JavaScript -->
+<script>
+    $(document).ready(function(){
+        var date_input=$('input[name="date"]'); //our date input has the name "date"
+        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+        var options={
+            format: 'yyyy-mm-dd',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        };
+        date_input.datepicker(options);
+    })
+</script>
+</body>
+</html>
